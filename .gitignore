@@ -110,3 +110,9 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+.DS_Store
+*~
+*.gz
+*.pyc
+__pycache__/
+
