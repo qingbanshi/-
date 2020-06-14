@@ -27,19 +27,8 @@ img_dim = (1, 28, 28)
 img_size = 784
 
 
-def _download(file_name):
-    file_path = dataset_dir + "/" + file_name
-    
-    if os.path.exists(file_path):
-        return
 
-    print("Downloading " + file_name + " ... ")
-    urllib.request.urlretrieve(url_base + file_name, file_path)
-    print("Done")
-    
-def download_mnist():
-    for v in key_file.values():
-       _download(v)
+
         
 def _load_label(file_name):
     file_path = dataset_dir + "/" + file_name
@@ -72,7 +61,6 @@ def _convert_numpy():
     return dataset
 
 def init_mnist():
-    download_mnist()
     dataset = _convert_numpy()
     print("Creating pickle file ...")
     with open(save_file, 'wb') as f:
