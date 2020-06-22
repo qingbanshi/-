@@ -6,11 +6,9 @@ import numpy as np
 class TwoLayerNet():
     def __init__(self, input_size, hidden_size, output_size, weight_init_std=.01):
         self.params = {}
-        self.params["W1"] = weight_init_std*\
-                            np.random.randn(input_size,hidden_size),
+        self.params["W1"] = weight_init_std*np.random.randn(input_size,hidden_size),
         self.params["B1"] = np.zeros(hidden_size),
-        self.params["W2"] = weight_init_std * \
-                            np.random.randn(hidden_size, output_size),
+        self.params["W2"] = weight_init_std * np.random.randn(hidden_size, output_size),
         self.params["B2"] = np.zeros(hidden_size)
 
     def predict(self,x):
@@ -18,8 +16,8 @@ class TwoLayerNet():
         B1, B2 = self.params["B1"], self.params["B2"]
 
         a1 = np.dot(x, w1)+B1
-        a2 = np.dot(a1, w2)+B1
-
+        z1 = sigmoid(a1)
+        a2 = np.dot(z1, w2)+B2
         y = softmax(a2)
         return y
 
